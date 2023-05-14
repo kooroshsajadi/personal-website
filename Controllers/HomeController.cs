@@ -28,19 +28,21 @@ namespace MyCV.Controllers
         {
             // var database = Client.GetDatabase("bkhovme9upbvyna").GetCollection<About>("About");
             //var result = database.Find(x => x.OpenToWork == "Yes").FirstOrDefault();
-            About a = new About();
-            a.Title = "Kourosh Sajjadi";
-            a.Birtday = "1999";
-            a.Degree="Master";
-            a.City = "Pavia";
-            a.Email = "kourosh_sajjadi@outlook.com";
-            //a.Phone = "+393343070936";
-            a.OpenToWork = "Yes";
-            a.Text1 = "I'm a software developer who loves learning more and sharing my knowledge.I'm keen on working as a team member on projects.Student Data science at Pavia university now.";
-            a.Text3 = "I am a software developer who loves learning more and sharing my knowledge. I am studying Computer engineering at Pavia university for my master's degree. I am keen on working as a team member on projects.Over 7 years of experience in web, Desktop application development involved in all stages of the Software Development Life Cycle.Experienced in .Net and refactoring, SOLID principles, and Clean Architecture.Familiar with python development, Joined in different industries such as Terminal handling, shipping, medical, capital marketing, Bank Infrastructure, and ERP system.";
-            a.subTitle = ".Net Developer"; 
+            var about = new About
+            {
+                Title = "Kourosh Sajjadi",
+                Birtday = "1999",
+                Degree = "Master",
+                City = "Pavia",
+                Email = "kourosh_sajjadi@outlook.com",
+                Phone = "+393792398297",
+                OpenToWork = "Yes",
+                Text1 = "I'm a software developer who loves learning more and sharing my knowledge.I'm keen on working as a team member on projects.Student Data science at Pavia university now.",
+                Text3 = "I am a software developer who loves learning more and sharing my knowledge. I am studying Computer engineering at Pavia university for my master's degree. I am keen on working as a team member on projects.Over 7 years of experience in web, Desktop application development involved in all stages of the Software Development Life Cycle.Experienced in .Net and refactoring, SOLID principles, and Clean Architecture.Familiar with python development, Joined in different industries such as Terminal handling, shipping, medical, capital marketing, Bank Infrastructure, and ERP system.",
+                subTitle = "Computer Engineer"
+            };
 
-            return View(a);
+            return View(about);
         }
 
 
