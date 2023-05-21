@@ -97,20 +97,29 @@
     this.classList.toggle('bi-x')
   })
 
-  /**
-   * Scrool with ofset on links with a class name .scrollto
-   */
-  on('click', '.scrollto', function(e) {
-    if (select(this.hash)) {
-      e.preventDefault()
+    function changeView(element) {
+        var partialView = $('[id^="' + element.hash.substring(1) + '"].partial-view').first();
+        $('.partial-view').removeClass('active');
+        $('#' + partialView).addClass('active');
+    }
 
-      let body = select('body')
-      if (body.classList.contains('mobile-nav-active')) {
-        body.classList.remove('mobile-nav-active')
-        let navbarToggle = select('.mobile-nav-toggle')
-        navbarToggle.classList.toggle('bi-list')
-        navbarToggle.classList.toggle('bi-x')
-      }
+  /**
+   * Scroll with ofset on links with a class name .scrollto
+   */
+    on('click', '.scrollto', function (e) {
+    if (select(this.hash)) {
+        e.preventDefault()
+        var target = $('[id^="' + this.hash.substring(1) + '"].partial-view').first();
+        document.querySelectorAll('.partial-view').forEach(element => element.classList.remove('x'));
+        $('.partial-view').removeClass('active');
+        $(target).addClass('active');
+        let body = select('body')
+        if (body.classList.contains('mobile-nav-active')) {
+            body.classList.remove('mobile-nav-active')
+            let navbarToggle = select('.mobile-nav-toggle')
+            navbarToggle.classList.toggle('bi-list')
+            navbarToggle.classList.toggle('bi-x')
+        }
       scrollto(this.hash)
     }
   }, true)
