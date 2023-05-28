@@ -6,71 +6,71 @@
 * License: https://bootstrapmade.com/license/
 */
 
-$(document).ready(function () {
-    function loadPageContent(page) {
-        debugger;
-        // Make an AJAX request to fetch the page content
-        $.ajax({
-            url: '/Home/GetViewContent', // Endpoint URL
-            type: 'GET',
-            data: { viewName: page }, // Pass the view name as a parameter
-            dataType: 'html',
-            success: function (response) {
-                // Update the content of the <main> tag with the fetched page content
-                $('#main').html(response);
-            },
-            error: function (xhr, status, error) {
-                console.error(error); // Handle any errors that occur during the AJAX request
-            }
-        });
-    }
+//$(document).ready(function () {
+//    function loadPageContent(page, element = null) {
+//        // Make an AJAX request to fetch the page content
+//        $.ajax({
+//            url: '/Home/GetViewContent', // Endpoint URL
+//            type: 'GET',
+//            data: { viewName: page }, // Pass the view name as a parameter
+//            dataType: 'html',
+//            success: function (response) {
+//                // Update the content of the <main> tag with the fetched page content
+//                $('#main').html(response);
+//                if (element) {
+//                    $('.nav-link.scrollto').removeClass('active');
+//                    $(element).addClass("active")
+//                }
+//            },
+//            error: function (xhr, status, error) {
+//                console.error(error);
+//            }
+//        });
+//    }
 
-    // Event listener for navbar item clicks
-    $('#navbar').on('click', 'a.nav-link', function (event) {
-        event.preventDefault();
-        debugger;
-        var page = $(this).children().first().data('page'); // Get the data-page attribute value
+//    $('#navbar').on('click', 'a.nav-link', function (event) {
+//        event.preventDefault();
+//        var page = $(this).children().first().data('page');
 
-        // Load the corresponding page content
-        loadPageContent(page);
-    });
+//        if (loadPageContent(page)) {
+//            $('.nav-link.scrollto').removeClass('active');
+//            $(this).addClass("active")
+//        }
+//    });
 
-    // Load the default page content (e.g., 'home' page) on initial page load
-    loadPageContent('Home');
-});
+//    // Load the default page content.
+//    loadPageContent('Home');
+//});
 
 
 (function () {
-    function loadPageContent(page) {
-        debugger;
-        // Make an AJAX request to fetch the page content
+    function loadPageContent(page, element = null) {
         $.ajax({
-            url: '/Home/GetViewContent', // Endpoint URL
+            url: '/Home/GetViewContent',
             type: 'GET',
-            data: { viewName: page }, // Pass the view name as a parameter
+            data: { viewName: page },
             dataType: 'html',
             success: function (response) {
-                // Update the content of the <main> tag with the fetched page content
                 $('#main').html(response);
+                if (element) {
+                    $('.nav-link.scrollto').removeClass('active');
+                    $(element).addClass("active")
+                }
             },
             error: function (xhr, status, error) {
-                console.error(error); // Handle any errors that occur during the AJAX request
+                console.error(error);
             }
         });
     }
 
-    // Event listener for navbar item clicks
     $('#navbar').on('click', 'a.nav-link', function (event) {
         event.preventDefault();
-        debugger;
-        var page = $(this).children().first().data('page'); // Get the data-page attribute value
+        var page = $(this).children().first().data('page');
 
-        // Load the corresponding page content
-        loadPageContent(page);
+        loadPageContent(page, this)
     });
 
-    // Load the default page content (e.g., 'home' page) on initial page load
-    //loadPageContent('Home');
+    loadPageContent('Home');
   "use strict";
 
   /**
@@ -171,23 +171,23 @@ $(document).ready(function () {
   /**
    * Scroll with ofset on links with a class name .scrollto
    */
-  //  on('click', '.scrollto', function (e) {
-  //  if (select(this.hash)) {
-  //      e.preventDefault()
-  //      var target = $('[id^="' + this.hash.substring(1) + '"].partial-view').first();
-  //      document.querySelectorAll('.partial-view').forEach(element => element.classList.remove('x'));
-  //      $('.partial-view').removeClass('active');
-  //      $(target).addClass('active');
-  //      let body = select('body')
-  //      if (body.classList.contains('mobile-nav-active')) {
-  //          body.classList.remove('mobile-nav-active')
-  //          let navbarToggle = select('.mobile-nav-toggle')
-  //          navbarToggle.classList.toggle('bi-list')
-  //          navbarToggle.classList.toggle('bi-x')
-  //      }
-  //    scrollto(this.hash)
-  //  }
-  //}, true)
+    on('click', '.scrollto', function (e) {
+    if (select(this.hash)) {
+        e.preventDefault()
+        var target = $('[id^="' + this.hash.substring(1) + '"].partial-view').first();
+        document.querySelectorAll('.partial-view').forEach(element => element.classList.remove('x'));
+        $('.partial-view').removeClass('active');
+        $(target).addClass('active');
+        let body = select('body')
+        if (body.classList.contains('mobile-nav-active')) {
+            body.classList.remove('mobile-nav-active')
+            let navbarToggle = select('.mobile-nav-toggle')
+            navbarToggle.classList.toggle('bi-list')
+            navbarToggle.classList.toggle('bi-x')
+        }
+      scrollto(this.hash)
+    }
+  }, true)
 
   /**
    * Scroll with ofset on page load with hash links in the url
@@ -213,18 +213,18 @@ $(document).ready(function () {
   /**
    * Hero type effect
    */
-  const typed = select('.typed')
-  if (typed) {
-    let typed_strings = typed.getAttribute('data-typed-items')
-    typed_strings = typed_strings.split(',')
-    new Typed('.typed', {
-      strings: typed_strings,
-      loop: true,
-      typeSpeed: 100,
-      backSpeed: 50,
-      backDelay: 2000
-    });
-  }
+  //const typed = select('.typed')
+  //if (typed) {
+  //  let typed_strings = typed.getAttribute('data-typed-items')
+  //  typed_strings = typed_strings.split(',')
+  //  new Typed('.typed', {
+  //    strings: typed_strings,
+  //    loop: true,
+  //    typeSpeed: 100,
+  //    backSpeed: 50,
+  //    backDelay: 2000
+  //  });
+  //}
 
   /**
    * Skills animation
