@@ -5,7 +5,72 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
-(function() {
+
+$(document).ready(function () {
+    function loadPageContent(page) {
+        debugger;
+        // Make an AJAX request to fetch the page content
+        $.ajax({
+            url: '/Home/GetViewContent', // Endpoint URL
+            type: 'GET',
+            data: { viewName: page }, // Pass the view name as a parameter
+            dataType: 'html',
+            success: function (response) {
+                // Update the content of the <main> tag with the fetched page content
+                $('#main').html(response);
+            },
+            error: function (xhr, status, error) {
+                console.error(error); // Handle any errors that occur during the AJAX request
+            }
+        });
+    }
+
+    // Event listener for navbar item clicks
+    $('#navbar').on('click', 'a.nav-link', function (event) {
+        event.preventDefault();
+        debugger;
+        var page = $(this).children().first().data('page'); // Get the data-page attribute value
+
+        // Load the corresponding page content
+        loadPageContent(page);
+    });
+
+    // Load the default page content (e.g., 'home' page) on initial page load
+    loadPageContent('Home');
+});
+
+
+(function () {
+    function loadPageContent(page) {
+        debugger;
+        // Make an AJAX request to fetch the page content
+        $.ajax({
+            url: '/Home/GetViewContent', // Endpoint URL
+            type: 'GET',
+            data: { viewName: page }, // Pass the view name as a parameter
+            dataType: 'html',
+            success: function (response) {
+                // Update the content of the <main> tag with the fetched page content
+                $('#main').html(response);
+            },
+            error: function (xhr, status, error) {
+                console.error(error); // Handle any errors that occur during the AJAX request
+            }
+        });
+    }
+
+    // Event listener for navbar item clicks
+    $('#navbar').on('click', 'a.nav-link', function (event) {
+        event.preventDefault();
+        debugger;
+        var page = $(this).children().first().data('page'); // Get the data-page attribute value
+
+        // Load the corresponding page content
+        loadPageContent(page);
+    });
+
+    // Load the default page content (e.g., 'home' page) on initial page load
+    //loadPageContent('Home');
   "use strict";
 
   /**
@@ -106,23 +171,23 @@
   /**
    * Scroll with ofset on links with a class name .scrollto
    */
-    on('click', '.scrollto', function (e) {
-    if (select(this.hash)) {
-        e.preventDefault()
-        var target = $('[id^="' + this.hash.substring(1) + '"].partial-view').first();
-        document.querySelectorAll('.partial-view').forEach(element => element.classList.remove('x'));
-        $('.partial-view').removeClass('active');
-        $(target).addClass('active');
-        let body = select('body')
-        if (body.classList.contains('mobile-nav-active')) {
-            body.classList.remove('mobile-nav-active')
-            let navbarToggle = select('.mobile-nav-toggle')
-            navbarToggle.classList.toggle('bi-list')
-            navbarToggle.classList.toggle('bi-x')
-        }
-      scrollto(this.hash)
-    }
-  }, true)
+  //  on('click', '.scrollto', function (e) {
+  //  if (select(this.hash)) {
+  //      e.preventDefault()
+  //      var target = $('[id^="' + this.hash.substring(1) + '"].partial-view').first();
+  //      document.querySelectorAll('.partial-view').forEach(element => element.classList.remove('x'));
+  //      $('.partial-view').removeClass('active');
+  //      $(target).addClass('active');
+  //      let body = select('body')
+  //      if (body.classList.contains('mobile-nav-active')) {
+  //          body.classList.remove('mobile-nav-active')
+  //          let navbarToggle = select('.mobile-nav-toggle')
+  //          navbarToggle.classList.toggle('bi-list')
+  //          navbarToggle.classList.toggle('bi-x')
+  //      }
+  //    scrollto(this.hash)
+  //  }
+  //}, true)
 
   /**
    * Scroll with ofset on page load with hash links in the url

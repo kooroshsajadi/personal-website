@@ -24,6 +24,11 @@ namespace MyCV.Controllers
             //Client = new MongoClient(configuration.GetConnectionString("MVConnectionString"));
         }
 
+        public IActionResult GetViewContent(string viewName)
+        {
+            return PartialView(viewName);
+        }
+
         public IActionResult Index()
         {
             // var database = Client.GetDatabase("bkhovme9upbvyna").GetCollection<About>("About");
