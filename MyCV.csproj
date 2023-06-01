@@ -25,7 +25,6 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\Admin\" />
-    <Folder Include="wwwroot\css\Admin\" />
   </ItemGroup>
 
 </Project>
