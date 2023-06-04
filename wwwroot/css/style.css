@@ -40,6 +40,19 @@ h6 {
   font-family: "Raleway", sans-serif;
 }
 
+.custom-link {
+    color: inherit;  Inherit the color from the parent 
+}
+
+/*.custom-link:hover {
+    color: #0563bb !important;
+}*/
+
+a.custom-link:hover img {
+    color: #0563bb !important;
+    mix-blend-mode: multiply;
+}
+
 /*--------------------------------------------------------------
 # Back to top button
 --------------------------------------------------------------*/

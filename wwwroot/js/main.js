@@ -18,6 +18,18 @@ const select = (el, all = false) => {
     }
 }
 
+function changeColor(element, color) {
+    element.style.setProperty('fill', color, 'important');
+}
+
+function iconHover(element) {
+    element.setAttribute('src', '/svg/icons8-slideshare-blue.svg');
+}
+
+function iconUnhover(element) {
+    element.setAttribute('src', '/svg/icons8-slideshare.svg');
+}
+
 /**
  * Easy event listener function
  */

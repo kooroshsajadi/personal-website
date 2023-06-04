@@ -11,6 +11,9 @@
     url('../fonts/boxicons.ttf') format('truetype'),
     url('../fonts/boxicons.svg?#boxicons') format('svg');
 }
+.custom:hover .bx {
+    color: #0563bb;
+}
 .bx
 {
     font-family: 'boxicons' !important;
