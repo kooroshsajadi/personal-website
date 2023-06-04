@@ -6,42 +6,38 @@
 * License: https://bootstrapmade.com/license/
 */
 
-//$(document).ready(function () {
-//    function loadPageContent(page, element = null) {
-//        // Make an AJAX request to fetch the page content
-//        $.ajax({
-//            url: '/Home/GetViewContent', // Endpoint URL
-//            type: 'GET',
-//            data: { viewName: page }, // Pass the view name as a parameter
-//            dataType: 'html',
-//            success: function (response) {
-//                // Update the content of the <main> tag with the fetched page content
-//                $('#main').html(response);
-//                if (element) {
-//                    $('.nav-link.scrollto').removeClass('active');
-//                    $(element).addClass("active")
-//                }
-//            },
-//            error: function (xhr, status, error) {
-//                console.error(error);
-//            }
-//        });
-//    }
+/**
+* Easy selector helper function
+*/
+const select = (el, all = false) => {
+    el = el.trim()
+    if (all) {
+        return [...document.querySelectorAll(el)]
+    } else {
+        return document.querySelector(el)
+    }
+}
 
-//    $('#navbar').on('click', 'a.nav-link', function (event) {
-//        event.preventDefault();
-//        var page = $(this).children().first().data('page');
+/**
+ * Easy event listener function
+ */
+const on = (type, el, listener, all = false) => {
+    let selectEl = select(el, all)
+    if (selectEl) {
+        if (all) {
+            selectEl.forEach(e => e.addEventListener(type, listener))
+        } else {
+            selectEl.addEventListener(type, listener)
+        }
+    }
+}
 
-//        if (loadPageContent(page)) {
-//            $('.nav-link.scrollto').removeClass('active');
-//            $(this).addClass("active")
-//        }
-//    });
-
-//    // Load the default page content.
-//    loadPageContent('Home');
-//});
-
+/**
+ * Easy on scroll event listener 
+ */
+const onscroll = (el, listener) => {
+    el.addEventListener('scroll', listener)
+}
 
 (function () {
     function loadPageContent(page, element = null) {
@@ -72,39 +68,6 @@
 
     loadPageContent('Home');
   "use strict";
-
-  /**
-   * Easy selector helper function
-   */
-  const select = (el, all = false) => {
-    el = el.trim()
-    if (all) {
-      return [...document.querySelectorAll(el)]
-    } else {
-      return document.querySelector(el)
-    }
-  }
-
-  /**
-   * Easy event listener function
-   */
-  const on = (type, el, listener, all = false) => {
-    let selectEl = select(el, all)
-    if (selectEl) {
-      if (all) {
-        selectEl.forEach(e => e.addEventListener(type, listener))
-      } else {
-        selectEl.addEventListener(type, listener)
-      }
-    }
-  }
-
-  /**
-   * Easy on scroll event listener 
-   */
-  const onscroll = (el, listener) => {
-    el.addEventListener('scroll', listener)
-  }
 
   /**
    * Navbar links active state on scroll
@@ -209,39 +172,6 @@
     window.addEventListener('load', () => {
       preloader.remove()
     });
-  }
-
-  /**
-   * Hero type effect
-   */
-  //const typed = select('.typed')
-  //if (typed) {
-  //  let typed_strings = typed.getAttribute('data-typed-items')
-  //  typed_strings = typed_strings.split(',')
-  //  new Typed('.typed', {
-  //    strings: typed_strings,
-  //    loop: true,
-  //    typeSpeed: 100,
-  //    backSpeed: 50,
-  //    backDelay: 2000
-  //  });
-  //}
-
-  /**
-   * Skills animation
-   */
-  let skilsContent = select('.skills-content');
-  if (skilsContent) {
-    new Waypoint({
-      element: skilsContent,
-      offset: '80%',
-      handler: function(direction) {
-        let progress = select('.progress .progress-bar', true);
-        progress.forEach((el) => {
-          el.style.width = el.getAttribute('aria-valuenow') + '%'
-        });
-      }
-    })
   }
 
   /**
