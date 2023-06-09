@@ -14,12 +14,16 @@
 
                     <div class="swiper-slide">
                         <div class="testimonial-item">
-                            <img src="img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                            <h3>Saul Goodman</h3>
-                            <h4>Ceo &amp; Founder</h4>
+                            <img src="img/testimonials/mohammad-emami.jpeg" class="testimonial-img" alt="">
+                            <h3>
+                                <a href="https://www.linkedin.com/in/mohammad-emami-8175949a/" target="_blank">
+                                    Mohammad Emami
+                                </a>
+                            </h3>
+                            <h4>Product Manager &amp; .NET Back-End Developer</h4>
                             <p>
                                 <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                                Kourosh has shown an extraordinary skill in being a hard-working person. He is a dependable person as he always sticks to the task he has been assigned to and proceeds it to the end even if the time is short.
                                 <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                             </p>
                         </div>
@@ -27,51 +31,16 @@
 
                     <div class="swiper-slide">
                         <div class="testimonial-item">
-                            <img src="img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                            <h3>Sara Wilsson</h3>
-                            <h4>Designer</h4>
+                            <img src="img/testimonials/avatar_scholar_128.png" class="testimonial-img" alt="">
+                            <h3>
+                                <a href="https://scholar.google.com/citations?hl=en&user=R6BzEiUAAAAJ&view_op=list_works&citft=1&citft=2&citft=3&email_for_op=KooroshSajadi%40gmail.com&gmla=AHoSzlVudzfwe-ykZEmfH6gFO4iSMzBwdfg32qIcfcyobKySfy2e4YIMvCpXmw9KNesLvozLz5gWNb8m6jlW0Y5ZeNqHwWYjoLOU1vNdW1ztUyFjll_4tRAjb_vd0fP8Dh4PxIHBk7iM3gyemFgquGmd9k5fS2sva63JKuSvhKIH9oe5nEEDPSz8i6WQNidWciidKH25_oWOsg1fQlY_sojAAargnMGa3MaDvG7C4RKP5Dnds1Es" target="_blank">
+                                    Mehdi Jabalameli
+                                </a>
+                            </h3>
+                            <h4>Department of Computer Engineering, Islamic Azad University of Najafabad</h4>
                             <p>
                                 <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                            </p>
-                        </div>
-                    </div><!-- End testimonial item -->
-
-                    <div class="swiper-slide">
-                        <div class="testimonial-item">
-                            <img src="img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                            <h3>Jena Karlis</h3>
-                            <h4>Store Owner</h4>
-                            <p>
-                                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                            </p>
-                        </div>
-                    </div><!-- End testimonial item -->
-
-                    <div class="swiper-slide">
-                        <div class="testimonial-item">
-                            <img src="img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                            <h3>Matt Brandon</h3>
-                            <h4>Freelancer</h4>
-                            <p>
-                                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
-                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                            </p>
-                        </div>
-                    </div><!-- End testimonial item -->
-
-                    <div class="swiper-slide">
-                        <div class="testimonial-item">
-                            <img src="img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-                            <h3>John Larson</h3>
-                            <h4>Entrepreneur</h4>
-                            <p>
-                                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
+                                I found him a hardworking, intelligent, and self-motivated student. Not only he exhibited excellent performance but also, he was ranked first in the course.
                                 <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                             </p>
                         </div>
@@ -83,4 +52,24 @@
 
         </div>
     </section>
+
+    <script>
+        /**
+        * Testimonials slider
+        */
+        new Swiper('.testimonials-slider', {
+            speed: 600,
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false
+            },
+            slidesPerView: 'auto',
+            pagination: {
+                el: '.swiper-pagination',
+                type: 'bullets',
+                clickable: true
+            }
+        });
+    </script>
 }
