@@ -1,0 +1,72 @@
+﻿@{
+    <section id="testimonials" class="testimonials section-bg">
+        <div class="container" data-aos="fade-up">
+
+            <header class="section-title">
+                <h2>Testimonials</h2>
+            </header>
+
+            <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+                <div class="swiper-wrapper">
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-item">
+                            <img src="img/testimonials/mohammad-emami.jpeg" class="testimonial-img" alt="">
+                            <h3>
+                                <a href="https://www.linkedin.com/in/mohammad-emami-8175949a/" target="_blank" style="color:#45505b">
+                                    Mohammad Emami
+                                </a>
+                            </h3>
+                            <h4>Product Manager &amp; .NET Back-End Developer, Kasra Co.</h4>
+                            <p>
+                                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                Kourosh has shown an extraordinary skill in being a hard-working person. He is a dependable person as he always sticks to the task he has been assigned to and proceeds it to the end even if the time is short.
+                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-item">
+                            <img src="img/testimonials/avatar_scholar_128.png" class="testimonial-img" alt="">
+                            <h3>
+                                <a href="https://scholar.google.com/citations?hl=en&user=R6BzEiUAAAAJ&view_op=list_works&citft=1&citft=2&citft=3&email_for_op=KooroshSajadi%40gmail.com&gmla=AHoSzlVudzfwe-ykZEmfH6gFO4iSMzBwdfg32qIcfcyobKySfy2e4YIMvCpXmw9KNesLvozLz5gWNb8m6jlW0Y5ZeNqHwWYjoLOU1vNdW1ztUyFjll_4tRAjb_vd0fP8Dh4PxIHBk7iM3gyemFgquGmd9k5fS2sva63JKuSvhKIH9oe5nEEDPSz8i6WQNidWciidKH25_oWOsg1fQlY_sojAAargnMGa3MaDvG7C4RKP5Dnds1Es" target="_blank" style="color:#45505b">
+                                    Mehdi Jabalameli
+                                </a>
+                            </h3>
+                            <h4>Assistant Professor, Department of Computer Engineering, Islamic Azad University of Najafabad</h4>
+                            <p>
+                                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                I found him a hardworking, intelligent, and self-motivated student. Not only he exhibited excellent performance but also, he was ranked first in the course.
+                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        /**
+        * Testimonials slider
+        */
+        new Swiper('.testimonials-slider', {
+            speed: 600,
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false
+            },
+            slidesPerView: 'auto',
+            pagination: {
+                el: '.swiper-pagination',
+                type: 'bullets',
+                clickable: true
+            }
+        });
+    </script>
+}

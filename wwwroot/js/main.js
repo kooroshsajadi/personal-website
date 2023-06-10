@@ -1,44 +1,87 @@
 /**
-* Template Name: iPortfolio - v3.7.0
-* Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
+* Template Name: MyResume
+* Updated: Mar 10 2023 with Bootstrap v5.2.3
+* Template URL: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
-(function() {
-  "use strict";
 
-  /**
-   * Easy selector helper function
-   */
-  const select = (el, all = false) => {
+/**
+* Easy selector helper function
+*/
+const select = (el, all = false) => {
     el = el.trim()
     if (all) {
-      return [...document.querySelectorAll(el)]
+        return [...document.querySelectorAll(el)]
     } else {
-      return document.querySelector(el)
+        return document.querySelector(el)
     }
-  }
+}
 
-  /**
-   * Easy event listener function
-   */
-  const on = (type, el, listener, all = false) => {
+function changeColor(element, color) {
+    element.style.setProperty('fill', color, 'important');
+}
+
+function iconHover(element) {
+    element.setAttribute('src', '/svg/icons8-slideshare-blue.svg');
+}
+
+function iconUnhover(element) {
+    element.setAttribute('src', '/svg/icons8-slideshare.svg');
+}
+
+/**
+ * Easy event listener function
+ */
+const on = (type, el, listener, all = false) => {
     let selectEl = select(el, all)
     if (selectEl) {
-      if (all) {
-        selectEl.forEach(e => e.addEventListener(type, listener))
-      } else {
-        selectEl.addEventListener(type, listener)
-      }
+        if (all) {
+            selectEl.forEach(e => e.addEventListener(type, listener))
+        } else {
+            selectEl.addEventListener(type, listener)
+        }
     }
-  }
+}
 
-  /**
-   * Easy on scroll event listener 
-   */
-  const onscroll = (el, listener) => {
+/**
+ * Easy on scroll event listener 
+ */
+const onscroll = (el, listener) => {
     el.addEventListener('scroll', listener)
-  }
+}
+
+(function () {
+    function loadPageContent(page, element = null) {
+        $.ajax({
+            url: '/Home/GetViewContent',
+            type: 'GET',
+            data: { viewName: page },
+            dataType: 'html',
+            success: function (response) {
+                $('#main').html(response);
+                if (element) {
+                    $('.nav-link.scrollto').removeClass('active');
+                    $(element).addClass("active")
+                }
+                // Update the URL using history.pushState()
+                //history.pushState(null, null, '/' + page.toLowerCase());
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        });
+    }
+
+    $('#navbar').on('click', 'a.nav-link', function (event) {
+        event.preventDefault();
+        var page = $(this).children().first().data('page');
+
+        loadPageContent(page, this)
+    });
+
+    loadPageContent('Home');
+  "use strict";
 
   /**
    * Navbar links active state on scroll
@@ -50,6 +93,7 @@
       if (!navbarlink.hash) return
       let section = select(navbarlink.hash)
       if (!section) return
+      if (section)
       if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
         navbarlink.classList.add('active')
       } else {
@@ -96,20 +140,29 @@
     this.classList.toggle('bi-x')
   })
 
-  /**
-   * Scrool with ofset on links with a class name .scrollto
-   */
-  on('click', '.scrollto', function(e) {
-    if (select(this.hash)) {
-      e.preventDefault()
+    function changeView(element) {
+        var partialView = $('[id^="' + element.hash.substring(1) + '"].partial-view').first();
+        $('.partial-view').removeClass('active');
+        $('#' + partialView).addClass('active');
+    }
 
-      let body = select('body')
-      if (body.classList.contains('mobile-nav-active')) {
-        body.classList.remove('mobile-nav-active')
-        let navbarToggle = select('.mobile-nav-toggle')
-        navbarToggle.classList.toggle('bi-list')
-        navbarToggle.classList.toggle('bi-x')
-      }
+  /**
+   * Scroll with ofset on links with a class name .scrollto
+   */
+    on('click', '.scrollto', function (e) {
+    if (select(this.hash)) {
+        e.preventDefault()
+        var target = $('[id^="' + this.hash.substring(1) + '"].partial-view').first();
+        document.querySelectorAll('.partial-view').forEach(element => element.classList.remove('x'));
+        $('.partial-view').removeClass('active');
+        $(target).addClass('active');
+        let body = select('body')
+        if (body.classList.contains('mobile-nav-active')) {
+            body.classList.remove('mobile-nav-active')
+            let navbarToggle = select('.mobile-nav-toggle')
+            navbarToggle.classList.toggle('bi-list')
+            navbarToggle.classList.toggle('bi-x')
+        }
       scrollto(this.hash)
     }
   }, true)
@@ -126,36 +179,13 @@
   });
 
   /**
-   * Hero type effect
+   * Preloader
    */
-  const typed = select('.typed')
-  if (typed) {
-    let typed_strings = typed.getAttribute('data-typed-items')
-    typed_strings = typed_strings.split(',')
-    new Typed('.typed', {
-      strings: typed_strings,
-      loop: true,
-      typeSpeed: 100,
-      backSpeed: 50,
-      backDelay: 2000
+  let preloader = select('#preloader');
+  if (preloader) {
+    window.addEventListener('load', () => {
+      preloader.remove()
     });
-  }
-
-  /**
-   * Skills animation
-   */
-  let skilsContent = select('.skills-content');
-  if (skilsContent) {
-    new Waypoint({
-      element: skilsContent,
-      offset: '80%',
-      handler: function(direction) {
-        let progress = select('.progress .progress-bar', true);
-        progress.forEach((el) => {
-          el.style.width = el.getAttribute('aria-valuenow') + '%'
-        });
-      }
-    })
   }
 
   /**
@@ -196,6 +226,15 @@
   });
 
   /**
+   * Initiate portfolio details lightbox 
+   */
+  const portfolioDetailsLightbox = GLightbox({
+    selector: '.portfolio-details-lightbox',
+    width: '90%',
+    height: '90vh'
+  });
+
+  /**
    * Portfolio details slider
    */
   new Swiper('.portfolio-details-slider', {
@@ -213,35 +252,6 @@
   });
 
   /**
-   * Testimonials slider
-   */
-  new Swiper('.testimonials-slider', {
-    speed: 600,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
-    slidesPerView: 'auto',
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
-    },
-    breakpoints: {
-      320: {
-        slidesPerView: 1,
-        spaceBetween: 20
-      },
-
-      1200: {
-        slidesPerView: 3,
-        spaceBetween: 20
-      }
-    }
-  });
-
-  /**
    * Animation on scroll
    */
   window.addEventListener('load', () => {
@@ -252,5 +262,10 @@
       mirror: false
     })
   });
+
+  /**
+   * Initiate Pure Counter 
+   */
+  new PureCounter();
 
 })()
