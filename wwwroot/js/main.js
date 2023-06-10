@@ -64,6 +64,8 @@ const onscroll = (el, listener) => {
                     $('.nav-link.scrollto').removeClass('active');
                     $(element).addClass("active")
                 }
+                // Update the URL using history.pushState()
+                //history.pushState(null, null, '/' + page.toLowerCase());
             },
             error: function (xhr, status, error) {
                 console.error(error);
