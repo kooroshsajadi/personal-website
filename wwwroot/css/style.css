@@ -843,6 +843,11 @@ section {
     background-position: center;
 }
 
+.certification {
+    max-width: 120px;
+    max-height: 120px;
+}
+
 .clamp-lines {
     display: -webkit-box;
     -webkit-line-clamp: 2;
