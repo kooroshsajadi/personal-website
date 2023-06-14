@@ -299,6 +299,20 @@ a.custom-link:hover img {
     position: relative;
 }
 
+/* Tablet */
+@media only screen and (max-width: 1024px) {
+    #hero {
+        background-image: url("../img/hero-bg-tablet-min.jpg");
+    }
+}
+
+/* Mobile */
+@media only screen and (max-width: 913px) {
+    #hero {
+        background-image: url("../img/hero-bg-mobile-min.jpg");
+    }
+}
+
 @media (min-width: 992px) {
   #hero {
     padding-left: 160px;
