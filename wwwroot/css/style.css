@@ -452,6 +452,14 @@ section {
   color: #728394;
 }
 
+.vimeo-link {
+    color: #45505b;
+}
+
+.vimeo-link:hover {
+    color: #45505b;
+}
+
 .about .content ul {
   list-style: none;
   padding: 0;
